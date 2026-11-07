@@ -1,32 +1,52 @@
-# React + TypeScript + Vite
+# IntraAI
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern browser interface that keeps research, AI, notes, and external tools in one resizable workspace.
 
-Currently, two official plugins are available:
+![Main view with AI Context and YouTube](images/SelectTools.png)
+*AI Context and related YouTube content open alongside the browser.*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![External app embedded](images/EmbedApps.png)
+*Anki embedded directly in the tools panel.*
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Resizable multi-panel layout** — tools, browser, and AI panels that can be dragged and minimized
+- **Full browser with tabs** — up to 6 tabs, address bar, back/forward history, and “Open Link in New Tab”
+- **AI Context tool** — right-click selected text to inject an explanation prompt into a dedicated AI webview
+- **Related YouTube tool** — right-click selected text to open a relevant YouTube search
+- **Notes** — simple grid of notes with titles and content, persisted locally
+- **External apps** — launch and position macOS apps (Anki, Obsidian, Cursor, etc.) inside a transparent panel
+- **Session persistence** — tabs, AI URLs, tool layout, and notes restore on launch
 
-## Expanding the Oxlint configuration
+## Process
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+### Paper Prototype
+![Paper prototype](images/Paper.png)
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+### Low-Fidelity Prototype
+![Low-fidelity prototype](images/Low_Fidelity.png)
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### High-Fidelity Prototype (Figma)
+![High-fidelity Figma prototype](images/High_Fidelity.png)
+
+### Final Implementation
+The finished app is built with **Tauri + React** and uses native webviews for the browser and AI panels, with AppleScript for external app placement on macOS.
+
+## Tech Stack
+
+- Tauri v2
+- React + TypeScript
+- react-resizable-panels
+- localStorage for session and notes
+
+## To Do
+- Add unique handling for common LLMs for Auto-Inject and Hide Chatbox features
+- Enable main webviews to be swappable with tools 
+- Add multi-session profiles and select on launch (for multiple projects)
+
+## Running Locally
+
+```bash
+npm install
+npx tauri dev
+

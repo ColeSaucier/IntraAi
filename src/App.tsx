@@ -256,7 +256,7 @@ export default function App() {
       x: Math.round(rect.left),
       y: Math.round(rect.top + headerHeight),
       width: Math.round(rect.width),
-      height: Math.round(rect.height - headerHeight),
+      height: Math.round(rect.height),
     };
   };
 
