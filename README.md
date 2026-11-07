@@ -2,10 +2,10 @@
 
 A modern browser interface that keeps research, AI, notes, and external tools in one resizable workspace.
 
-![Main view with AI Context and YouTube](images/SelectTools.png)
+![Main view with AI Context and YouTube](Images/SelectTools.png)
 *AI Context and related YouTube content open alongside the browser.*
 
-![External app embedded](images/EmbedApps.png)
+![External app embedded](Images/EmbedApps.png)
 *Anki embedded directly in the tools panel.*
 
 ## Features
@@ -21,13 +21,13 @@ A modern browser interface that keeps research, AI, notes, and external tools in
 ## Process
 
 ### Paper Prototype
-![Paper prototype](images/Paper.png)
+![Paper prototype](Images/Paper.png)
 
 ### Low-Fidelity Prototype
-![Low-fidelity prototype](images/Low_Fidelity.png)
+![Low-fidelity prototype](Images/Low_Fidelity.png)
 
 ### High-Fidelity Prototype (Figma)
-![High-fidelity Figma prototype](images/High_Fidelity.png)
+![High-fidelity Figma prototype](Images/High_Fidelity.png)
 
 ### Final Implementation
 The finished app is built with **Tauri + React** and uses native webviews for the browser and AI panels, with AppleScript for external app placement on macOS.
