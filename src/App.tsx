@@ -420,6 +420,7 @@ export default function App() {
 
       injectBrowserUrlWatcher(wv.label, tabId).catch(() => {});
       injectContextMenu(wv.label).catch(() => {});
+      injectNewTabHandler(wv.label).catch(() => {});
     }, 1200);
 
     return () => clearInterval(interval);
@@ -772,6 +773,40 @@ useEffect(() => {
       }
     `;
     try { await invoke("eval_on_webview", { label, script }); } catch {}
+  };
+
+  const injectNewTabHandler = async (label: string) => {
+    const script = `
+      (function() {
+        if (window.__newTabHandlerInstalled) return;
+        window.__newTabHandlerInstalled = true;
+
+        const origOpen = window.open;
+        window.open = function(url, target, features) {
+          if (url && window.__TAURI__?.event?.emit) {
+            window.__TAURI__.event.emit('open-in-new-tab', { url: url.toString() });
+            return null;
+          }
+          return origOpen.apply(this, arguments);
+        };
+
+        document.addEventListener('click', (e) => {
+          const a = e.target.closest('a');
+          if (!a || !a.href) return;
+          const isBlank = a.target === '_blank' || e.metaKey || e.ctrlKey;
+          if (isBlank && window.__TAURI__?.event?.emit) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.__TAURI__.event.emit('open-in-new-tab', { url: a.href });
+          }
+        }, true);
+      })();
+    `;
+    try {
+      await invoke("eval_on_webview", { label, script });
+    } catch (err) {
+      console.warn("new-tab inject failed", err);
+    }
   };
 
   const injectBrowserUrlWatcher = async (label: string, tabId: string) => {
