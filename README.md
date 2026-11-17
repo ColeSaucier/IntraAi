@@ -5,9 +5,6 @@ A modern browser interface that keeps research, AI, notes, and external tools in
 ![Main view with AI Context and YouTube](Images/SelectTools.png)
 *AI Context and related YouTube content open alongside the browser.*
 
-![External app embedded](Images/EmbedApps.png)
-*Anki embedded directly in the tools panel.*
-
 ## Features
 
 - **Resizable multi-panel layout** — tools, browser, and AI panels that can be dragged and minimized
