@@ -3,7 +3,7 @@
 A modern browser interface that keeps research, AI, notes, and external tools in one resizable workspace.
 
 ![Main view with AI Context and YouTube](Images/SelectTools.png)
-*AI Context and related YouTube content open alongside the browser.*
+*AI Context and related YouTube content open alongside the browser. External app embedding not shown*
 
 ## Features
 
